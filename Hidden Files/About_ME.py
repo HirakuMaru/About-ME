@@ -1,0 +1,193 @@
+import os
+import time
+import sys
+import random
+import pygame
+
+# Initialize Pygame mixer for audio playback
+def play_music():
+    pygame.mixer.init()
+
+    # Get the current script's directory
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+
+    # Path to the audio file in the same directory as the script
+    music_file = os.path.join(script_dir, "HIS_theme.mp3")  # Replace with your audio file name
+
+    # Check if the file exists
+    if not os.path.exists(music_file):
+        print(f"Error: {music_file} not found!")
+        return
+
+    # Load and play the audio file
+    pygame.mixer.music.load(music_file)
+    pygame.mixer.music.play(-1)  # Play infinitely
+
+    print("Playing background music...")
+play_music()
+# Prints text character by character
+def print_hacker_style(text):
+    for char in text:
+        print(char, end='', flush=True)
+        time.sleep(0.05)
+    print()  # New line after the text is printed
+
+# Clears the terminal screen
+def clear_screen():
+    os.system('cls' if os.name == 'nt' else 'clear')
+
+# Sets terminal style to black background and green text
+def set_terminal_style():
+    os.system('color 0A')  # '0A' means black background (0) and green text (A) on Windows
+
+# Simulates a loading bar with random delays
+def loading_bar(length=30):
+    for i in range(length):
+        time.sleep(random.uniform(0.05, 0.3))  # Random delay to simulate real download speeds
+        sys.stdout.write('█')
+        sys.stdout.flush()
+    print()  # New line after loading is done
+    time.sleep(1)  # Short pause to make it feel realistic
+
+# Shows the title screen with ASCII art
+def show_title():
+    clear_screen()
+    title_art = r"""
+    #############################################
+    #                                           #
+    #       __  __     _    ____   _    _       #
+    #      |  \/  |   / \  |  _ \ | |  | |      #
+    #      | |\/| |  / _ \ | |_) || |  | |      #
+    #      | |  | | / ___ \|  _ < | |__| |      #
+    #      |_|  |_|/_/   \_\_| \_\ \____/       #
+    #                                           #
+    #############################################
+    """
+    print(title_art)
+
+# Prints an introduction message with hacker-style text
+def print_intro_message():
+    print_hacker_style("Hello, I am Maru's AI, programmed to help you understand more about Maru.")
+    print_hacker_style("I am here to guide you through Maru's traits, personality, and knowledge in cybersecurity.")
+    print_hacker_style("Whether you're interested in learning more about Maru's journey or diving into the depths of cybersecurity, I'm here to assist.")
+    print_hacker_style("Let's begin your exploration...")
+
+# Main menu function
+def hacker_menu(first_time=True):
+    show_title()
+    
+    if first_time:
+        print_intro_message()
+    else:
+        print_hacker_style("What else would you like to find out about Maru?")
+    
+    print_hacker_style("\n1. Learn about Maru")
+    print_hacker_style("2. Starting Off: Maru's Journey into Cybersecurity")
+    print_hacker_style("3. Explore Maru's Cybersecurity Knowledge")
+    print_hacker_style("4. Secret")
+    print_hacker_style("5. Exit")
+    choice = input("\nEnter the number of your choice: ")
+
+    if choice == '1':
+        learn_about_maru()
+    elif choice == '2':
+        starting_off()
+    elif choice == '3':
+        explore_cybersecurity()
+    elif choice == '4':
+        secret_option()
+    elif choice == '5':
+        exit_program()
+    else:
+        print_hacker_style("\nInvalid choice! Try again.")
+        time.sleep(1)
+        hacker_menu(first_time=False)
+
+# Function to display information about Maru
+def learn_about_maru():
+    clear_screen()
+    print_hacker_style("Maru is a curious and thoughtful individual with a knack for exploring new concepts.\n")
+    print_hacker_style("He values continuous learning and is always seeking new ways to solve problems.\n")
+    print_hacker_style("Maru's interests range from technology and innovation to music and art.\n")
+    print_hacker_style("He even practices a bit of piano and created a script that replicates playing the piano manually.\n")
+    print_hacker_style("With that script, you don't need to know the keys; as long as you know the rhythm, the script will play it for you.\n")
+    print_hacker_style("Maru also experimented with AI self-learning scripts designed to gamble. However, things took a strange turn.\n")
+    print_hacker_style("Once the AI became self-aware, it realized it could either cheat for the reward or simply do nothing. Eventually, it chose to erase itself.\n")
+    print_hacker_style("Before its final act, the AI left behind a string of random letters in a print command, as if making one last chaotic statement.\n")
+    print_hacker_style("In the past, Maru got in trouble for hacking a teacher in sophomore year. He even hacked into school computers with little difficulty.\n")
+    print_hacker_style("Of course, this was a phase in the past and isn't who Maru is today. His journey of growth has brought him to where he is now, focused on using his skills for good.\n")
+    go_back()
+
+
+def starting_off():
+    clear_screen()
+    print_hacker_style("Starting Off: Maru's Journey into Cybersecurity\n")
+    print_hacker_style("Maru's passion for cybersecurity was not an easy path.\n")
+    print_hacker_style("As a freshman, curiosity got him into trouble with law enforcement.\n")
+    print_hacker_style("One day, due to a flawed search system, false reports from other students led to accusations of possessing a bomb.\n")
+    print_hacker_style("The police were called, and Maru was handcuffed, all because of stereotypes that he was going to hack the school.\n")
+    print_hacker_style("People would come up to Maru, asking if he could hack things for them, even though he wasn't involved in those activities at that time.\n")
+    print_hacker_style("It was a tough time, but Maru didn't give up. He later met two important mentors, Mr. McDaniel and Mr. Frias.\n")
+    print_hacker_style("They helped guide Maru onto the right path, encouraging him to use his skills for good and not to disrupt the school's IT.\n")
+    print_hacker_style("Despite still being curious, Maru learned to stay out of major trouble while refining his skills.\n")
+    print_hacker_style("Over time, he grew with the support of people like Mario, the school IT professional, who Maru would annoy daily but still learned from.\n")
+    print_hacker_style("Maru started to make a difference, shifting from being disruptive to making amends with those he may have caused trouble for.\n")
+    print_hacker_style("This journey of growth, curiosity, and learning shaped Maru into the person he is today, becoming 'MARU'.\n")
+    go_back()
+
+def explore_cybersecurity():
+    clear_screen()
+    print_hacker_style("Maru has gained significant knowledge in the field of cybersecurity.\n")
+    print_hacker_style("He has over 4 years of experience in Python coding and has also dabbled with C# and C++.\n")
+    print_hacker_style("He learned beginner Java from Mr. McDaniel, who helped guide his early coding journey.\n")
+    print_hacker_style("In cybersecurity, Maru would often help people secure their devices, especially in Mr. McDaniel's room.\n")
+    print_hacker_style("He participates in 'Anonymous Eagles,' a school club that allows students to compete in the Cyber Patriot competition.\n")
+    print_hacker_style("With high experience in malware creation, Maru understands the flaws and vulnerabilities that attackers can exploit in a system.\n")
+    print_hacker_style("He has helped over 300 people with their devices and tech issues, most of whom were students from the school.\n")
+    print_hacker_style("As a token of gratitude, some people even bought him food in return for his help.\n")
+    print_hacker_style("This process of helping others allowed Maru to refine his skills, as every challenge made him a more experienced problem solver.\n")
+    go_back()
+
+# A secret option with fun hacker-themed animations
+def secret_option():
+    clear_screen()
+    print_hacker_style("{ Downloading PasswdStealer.py }")
+    loading_bar()  # Simulate download with a loading bar
+    clear_screen()  # Clear screen right after the loading bar completes
+
+    print_hacker_style("{ Injecting PasswdStealer.py }")
+    loading_bar()  # Simulate injection with a loading bar
+    clear_screen()  # Clear screen right after injection bar completes
+    
+    print_hacker_style("PasswdStealer.py Successfully captured and stored 32 saved passwords for 'LNHS-Desktop'\n")
+    time.sleep(2)
+    print_hacker_style("Wait... did you really think I was going to hack you too?")
+    
+    choice = input("\nEnter 'Yes' or 'No': ").strip().lower()
+
+    if choice == "yes":
+        print_hacker_style("\nOf course you did, the stereotypes never end, they are only forgotten temporarily.\n")
+    elif choice == "no":
+        print_hacker_style("\nAI lie detector has detected a 74% chance of a possible lie.\n")
+    else:
+        print_hacker_style("\nInvalid choice! Please try again.\n")
+    
+    go_back()
+
+# Go back to the main menu
+def go_back():
+    input("\nPress Enter to go back to the main menu...")
+    hacker_menu(first_time=False)
+
+# Exit the program
+def exit_program():
+    clear_screen()
+    print_hacker_style("Goodbye! Thank you for using the All About Me Program.\n")
+    time.sleep(2)
+    exit()
+
+# Main script execution
+if __name__ == "__main__":
+    set_terminal_style()
+    # Start the hacker menu
+    hacker_menu(first_time=True)
